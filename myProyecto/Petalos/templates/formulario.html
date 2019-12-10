@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Formulario - Floreria
+{% endblock titulo %} 
+{% load static %}
+{% block contenido %}
+    <div style="padding-left: 1200px;">
+        <button type="button" class="btn btn-dark" onclick="javascript:location.href='{% url 'LOGOUT' %}'">Log Out</button>
+    </div>
+    <div class="central">
+        <h2>Registre los datos de la flor que desea ingresar</h2>
+    </div>
+
+    <form method="POST" action="" id="formulario"  enctype="multipart/form-data" style="padding-left: 100px; padding-right: 100px; padding-bottom: 100px;">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="InputName">Nombre de la flor</label>
+          <input type="text" class="form-control" name="InputName" placeholder="Tulipan, Rosa, Clavel, Copihue...">
+        </div>
+        <div class="form-group">
+            <label for="InputFile">Foto de la flor</label>
+            <input type="file" class="form-control-file" name="InputFile">
+        </div>
+        <div class="form-group">
+            <label for="InputPrecio">Precio de la flor</label>
+            <input type="number" class="form-control" name="InputPrecio" placeholder="$5.000 CLP...">
+        </div>
+        <div class="form-group">
+            <label for="InputDescripcion">Descripcion de la flor</label>
+            <textarea class="form-control" name="InputDescripcion" rows="3" placeholder="Flor de color... , proviene de... , etc"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="InputEstado">Estado</label>
+            <select class="form-control" name="InputEstado">
+              <option>Disponible</option>
+              <option>No Disponible</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="InputStock">Stock</label>
+            <input type="number" class="form-control" name="InputStock" placeholder="10 Unidades... 15 Unidades">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+{% endblock contenido %}

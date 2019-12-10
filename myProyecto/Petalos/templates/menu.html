@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Menu Principal - Floreria
+{% endblock titulo %} 
+
+{% load static %}
+
+{% block contenido %}
+    <div style="padding-left: 1100px;">
+        <button type="button" class="btn btn-dark" onclick="javascript:location.href='{% url 'LOGOUT' %}'">Log Out</button>
+    </div>
+    <div class="central">
+        <h3>Listado Flores</h3>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-4" style="width: 1350px;">
+        {% for p in listaFlores %} 
+        <div class="col mb-4" style="padding-left: 40px;">   
+            <div class="card h-100" style="width: 200px; ">
+                <img src="{{p.fotografia.url}}" height="250px" >
+                <div class="card-body">
+                    <h5 class="card-title">{{p.name}}</h5>
+                    <h6>${{p.valor}} CLP</h6>
+                    <p class="card-text">{{p.descripcion}}</p>
+                    <a class="btn btn-primary" href= "{% url 'AGREGAR_CARRO' p.name %}" onclick='alert("Se agrego a carrito")'>Comprar Flor</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock contenido %}

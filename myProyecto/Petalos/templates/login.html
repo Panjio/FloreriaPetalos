@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Login - Floreria
+{% endblock titulo %}
+
+{% load static %}
+
+{% block contenido %}
+<form action="" method="POST" style="padding-left: 100px; padding-right: 100px; padding-bottom: 100px;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="InputUsuario">User</label>
+        <input type="text" class="form-control" name="InputUsuario" id="InputUsuario">
+    </div>
+    <div class="form-group">
+        <label for="InputPassword">Password</label>
+        <input type="password" class="form-control" name="InputPassword" id="InputPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">Acceder</button>
+</form>
+{% endblock contenido %}
